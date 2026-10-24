@@ -1,3 +1,8 @@
+// @deno-types="./asset-url.d.ts"
+import hairUrl from "./assets/hair.png?no-inline";
+// @deno-types="./asset-url.d.ts"
+import glassesUrl from "./assets/glasses.png?no-inline";
+
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
@@ -6,6 +11,18 @@ const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
 face.setAttribute("aria-label", "A neutral face");
+
+// Image made by me using MSPaint and Aseprite
+const hairImage = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+hairImage.setAttribute("href", hairUrl);
+hairImage.setAttribute("x", "0");
+hairImage.setAttribute("y", "-40");
+hairImage.setAttribute("width", "200");
+hairImage.setAttribute("height", "200");
+face.append(hairImage);
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -58,6 +75,18 @@ mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
+
+// Image made by me using MSPaint and Aseprite
+const glassesImage = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+glassesImage.setAttribute("href", glassesUrl);
+glassesImage.setAttribute("x", "35");
+glassesImage.setAttribute("y", "10");
+glassesImage.setAttribute("width", "140");
+glassesImage.setAttribute("height", "140");
+face.append(glassesImage);
 
 portrait.append(face);
 
