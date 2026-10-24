@@ -12,10 +12,51 @@ head.setAttribute("cx", "100");
 head.setAttribute("cy", "100");
 head.setAttribute("rx", "78");
 head.setAttribute("ry", "86");
-head.setAttribute("fill", "#f3cf87");
+head.setAttribute("fill", "url(#headGradient)");
 head.setAttribute("stroke", "#302c29");
 head.setAttribute("stroke-width", "4");
+
+const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+
+const headGradient = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "linearGradient",
+);
+headGradient.setAttribute("id", "headGradient");
+headGradient.setAttribute("x1", "0%");
+headGradient.setAttribute("y1", "0%");
+headGradient.setAttribute("x2", "0%");
+headGradient.setAttribute("y2", "100%");
 face.append(head);
+
+const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+stop1.setAttribute("offset", "0%");
+stop1.setAttribute("stop-color", " #ffda90");
+stop1.setAttribute("stop-opacity", "1");
+
+const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+stop2.setAttribute("offset", "100%");
+stop2.setAttribute("stop-color", " #d4b067");
+stop2.setAttribute("stop-opacity", "1");
+
+headGradient.append(stop1);
+headGradient.append(stop2);
+defs.append(headGradient);
+face.append(defs);
+
+const eyebrow1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+eyebrow1.setAttribute("d", "M 60 65 Q 72.5 60 85 65");
+eyebrow1.setAttribute("fill", "none");
+eyebrow1.setAttribute("stroke", "#000000");
+eyebrow1.setAttribute("stroke-width", "2");
+face.append(eyebrow1);
+
+const eyebrow2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+eyebrow2.setAttribute("d", "M 116 65 Q 128.5 60 141 65");
+eyebrow2.setAttribute("fill", "none");
+eyebrow2.setAttribute("stroke", "#000000");
+eyebrow2.setAttribute("stroke-width", "2");
+face.append(eyebrow2);
 
 const leftEye = document.createElementNS(
   "http://www.w3.org/2000/svg",
