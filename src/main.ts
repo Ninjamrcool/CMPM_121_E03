@@ -20,60 +20,32 @@ function buildFace() {
   face.setAttribute("role", "img");
   face.setAttribute("aria-label", "A neutral face");
 
-  const head = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "ellipse",
-  );
-  head.setAttribute("cx", "100");
-  head.setAttribute("cy", "100");
-  head.setAttribute("rx", "78");
-  head.setAttribute("ry", "86");
-  head.setAttribute("fill", "#f3cf87");
-  head.setAttribute("stroke", "#302c29");
-  head.setAttribute("stroke-width", "4");
-  face.append(head);
+  let sideLength = 50;
+  let squaresPerLine = 1;
+  let x = 0;
+  let y = 0;
 
-  const leftEye = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "ellipse",
-  );
-  leftEye.setAttribute("cx", "72");
-  leftEye.setAttribute("cy", "82");
-  leftEye.setAttribute("rx", "6");
-  leftEye.setAttribute("ry", "9");
-  leftEye.setAttribute("fill", "#302c29");
-  face.append(leftEye);
+  while (sideLength >= 1) {
+    for (let i = 0; i < squaresPerLine; i++) {
+      const dot = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "rect",
+      );
+      dot.setAttribute("width", String(sideLength));
+      dot.setAttribute("height", String(sideLength));
+      dot.setAttribute("fill", "#563b67");
 
-  const rightEye = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "ellipse",
-  );
-  rightEye.setAttribute("cx", "128");
-  rightEye.setAttribute("cy", "82");
-  rightEye.setAttribute("rx", "6");
-  rightEye.setAttribute("ry", "9");
-  rightEye.setAttribute("fill", "#302c29");
-  face.append(rightEye);
+      dot.setAttribute("x", String(2 * x * (i / (squaresPerLine - 1))));
+      dot.setAttribute("y", String(2 * y * (1 - (i / (squaresPerLine - 1)))));
 
-  const nose = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  nose.setAttribute("x1", "100");
-  nose.setAttribute("y1", "96");
-  nose.setAttribute("x2", "96");
-  nose.setAttribute("y2", "112");
-  nose.setAttribute("stroke", "#302c29");
-  nose.setAttribute("stroke-width", "4");
-  nose.setAttribute("stroke-linecap", "round");
-  face.append(nose);
+      face.append(dot);
+    }
 
-  const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  mouth.setAttribute("x1", "75");
-  mouth.setAttribute("y1", "137");
-  mouth.setAttribute("x2", "125");
-  mouth.setAttribute("y2", "137");
-  mouth.setAttribute("stroke", "#302c29");
-  mouth.setAttribute("stroke-width", "4");
-  mouth.setAttribute("stroke-linecap", "round");
-  face.append(mouth);
+    x += sideLength;
+    y += sideLength;
+    sideLength /= 2;
+    squaresPerLine = (squaresPerLine * 2) + 3;
+  }
 
   return face;
 }
