@@ -13,3 +13,8 @@
 - For C, I will create a simple outdoors environment around the face, adding some fake lighting from the sun using gradients, and using curves and shapes to add elements (such as a field) outside the face.
 - Criteria: The page shows a basic outdoor environment with simple lighting. It uses at least some curves to build its elements.
 - NOTE: Implementation changed significantly from the plan to instead modify the face instead of adding an environment.
+
+## Chosen Branch: A
+
+- A was chosen to be merged into main, which is the fractal built from squares.
+- This is because all its criteria were completed without changes to the plan, and it is the most complex and visually transformative of the three experiments.
